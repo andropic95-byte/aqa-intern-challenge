@@ -35,3 +35,4 @@ export class WidgetPage {
     await this.wrapper().locator('button[class^="closeBtn__"]').click();
   }
 }
+
