@@ -1,4 +1,4 @@
-# AQA intern challenge
+# QA Fullstack challenge
 
 Решение тестового задания для стажировки QA Fullstack в Учи.ру.
 
