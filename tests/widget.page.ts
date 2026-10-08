@@ -10,7 +10,17 @@ export class WidgetPage {
   }
 
   async openWidget(): Promise<void> {
-    await this.wrapper().locator('[data-test="openWidget"]').click();
+    const openButton = this.wrapper().locator('[data-test="openWidget"]');
+
+    try {
+      await openButton.waitFor({ state: 'visible', timeout: 15_000 });
+    } catch {
+      // The external support widget is occasionally not injected on the first load.
+      await this.page.reload({ waitUntil: 'domcontentloaded' });
+      await openButton.waitFor({ state: 'visible', timeout: 15_000 });
+    }
+
+    await openButton.click();
   }
 
   getPopularArticles(): Locator {
